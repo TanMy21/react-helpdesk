@@ -1,6 +1,7 @@
 import React from "react";
 // import Login from "./components/login";
 import "./App.css";
+import Dashboard from "./components/dashboard/dashboard";
 import Navbar from "./components/navbar";
 import Sidebar from "./components/sidebar";
 
@@ -10,8 +11,9 @@ class App extends React.Component {
     return (
       <div className="App">
         {/* <Login /> */}
-        <Navbar />
-        <Sidebar />
+        {/* <Navbar />
+        <Sidebar /> */}
+        <Dashboard />
       </div>
     );
   }
