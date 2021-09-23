@@ -7,11 +7,22 @@ const cors = require("cors");
 
 const cookieParser = require("cookie-parser");
 
+const passport = require("passport");
+
 if (process.env.NODE_ENV !== "production") {
   require("dotenv").config();
 }
 
-const pool = require("./config/db_config");
+const db = require("./config/db_config");
+
+const jwtStrategy = require("./strategies/JwtStrategy");
+
+const localStrategy = require("./strategies/LocalStrategy");
+
+const authenticate = require("./config/authenticate");
+
+const userRouter = require("./routes/userRoutes");
+
 
 // call //
 const app = express();
@@ -42,6 +53,9 @@ const corsOptions = {
 
 app.use(cors(corsOptions));
 
+app.use(passport.initialize());
+
+app.use("/user", userRouter);
 
 // routes //
 app.get("/", function (req, res) {
