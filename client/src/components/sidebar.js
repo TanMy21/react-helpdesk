@@ -13,22 +13,22 @@ const Sidebar = () => {
   return (
     <Container className="sidebar">
       <Row className="justify-content-md-center mt-2">
-        <a href="" id="dashboard-links"><RiCustomerService2Line /></a>
+        <a href="/#" id="dashboard-links"><RiCustomerService2Line /></a>
       </Row>
       <Row className="justify-content-md-center mt-3">
-        <a href="" id="dashboard-links"><GoDashboard /></a>
+        <a href="/#" id="dashboard-links"><GoDashboard /></a>
       </Row>
       <Row className="justify-content-md-center mt-3">
-        <a href="" id="dashboard-links"><GrTicket /></a>
+        <a href="/#" id="dashboard-links"><GrTicket /></a>
       </Row>
       <Row className="justify-content-md-center mt-3">
-        <a href="" id="dashboard-links"><IoCreateOutline /></a>
+        <a href="/#" id="dashboard-links"><IoCreateOutline /></a>
       </Row>
       <Row className="justify-content-md-center mt-3">
-        <a href="" id="dashboard-links"><MdContacts /></a>
+        <a href="/#" id="dashboard-links"><MdContacts /></a>
       </Row>
       <Row className="justify-content-md-center mt-3">
-        <a href="" id="dashboard-links"><IoSettingsOutline /></a>
+        <a href="/#" id="dashboard-links"><IoSettingsOutline /></a>
       </Row>
     </Container>
   );
