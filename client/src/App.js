@@ -3,6 +3,7 @@ import React from "react";
 import "./App.css";
 import Dashboard from "./components/dashboard/dashboard";
 import Navbar from "./components/navbar";
+import NewTicket from "./components/newTickets/newTickets";
 import Sidebar from "./components/sidebar";
 import Tickets from "./components/tickets/tickets";
 
@@ -15,7 +16,8 @@ class App extends React.Component {
         {/* <Navbar />
         <Sidebar /> */}
         {/* <Dashboard /> */}
-        <Tickets />
+        {/* <Tickets /> */}
+        <NewTicket />
       </div>
     );
   }
