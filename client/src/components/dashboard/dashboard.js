@@ -7,9 +7,10 @@ import Cards from "./cards";
 import Trends from "./trends";
 
 const Dashboard = () => {
+  const title = "Dashboard";
   return (
     <>
-      <Nav />
+      <Nav title={title}/>
       <Sidebar />
       <div className="main">
         <Cards />

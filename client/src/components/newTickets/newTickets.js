@@ -6,10 +6,11 @@ import NewTicketForm from "./newTicketForm";
 // import Col from "react-bootstrap/Col";
 
 
-const NewTicket = () => {
+const NewTicket = (props) => {
+  const title = "New Ticket";
   return (
     <>
-      <Nav />
+      <Nav title={title}/>
       <Sidebar />
       <div className="main">
         <NewTicketForm />

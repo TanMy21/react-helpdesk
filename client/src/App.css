@@ -58,7 +58,7 @@ body{
 
 /*****************  Sidebar  ***************/
 .sidebar{
-  width: 100px;
+  width: 72px;
   height: 100%;
   position: fixed;
   z-index: 2;
@@ -74,6 +74,26 @@ body{
   color: rgb(255, 255, 255);
 }
 
+.sb-link-active{
+  width: 64px;
+  height: 64px;
+  border-radius: 8px;
+  background-color: green;
+}
+
+.sb-logo{
+  width: 60px;
+  height: 60px;
+  margin-left: -6px;
+  border-radius: 50%;
+  background-color: white;
+  color: #294255;
+}
+
+.cs-logo{
+  margin-left: 12px;
+  margin-top: -2px;
+}
 
 /*****************  Navbar  ***************/
 .navbar{
@@ -91,7 +111,7 @@ body{
   position: relative;
   color: #2c6beb;
   top: 4px;  
-  left: -42%;
+  left: -40%;
   font-size: 2rem;
   font-weight: 600;
 }
@@ -124,19 +144,23 @@ body{
   position: relative;
   width: 50px;
   height: 50px;
-  left: 52%;
-  top: -196%;  
+  margin-left: 10%;
+  top: -196%;
   border-radius: 50%;
   background-color: aquamarine;
+}
+
+.user-icon-img{
+  margin-left: 16px;
 }
 
 /********** Main Container *********/
 .main{
   position: relative;
-  width: 94%;
+  width: 95%;
   height: 100%;
-  left: 6%;
-  border: 2px solid black;
+  left: 5%;
+  /* border: 2px solid black; */
 }
 
 /* ******************* Dashboard ************** */
@@ -282,14 +306,14 @@ select{
 }
 
 .tkt-subject{
-  margin-left: -78%;
+  margin-left: -1%;
   font-size: 24px;
   font-weight: 700;
   color: rgb(1, 53, 53);
 }
 
 .tkt-meta{
-  margin-left: -124%;
+  margin-left: -92%;
   margin-top: -12px;
 }
 
@@ -317,7 +341,7 @@ select{
   width: 25%;
   height: 900px;
   float: right;
-  margin-top: -64%;
+  margin-top: -1112px;
   background-color: white;
 }
 
@@ -357,4 +381,54 @@ select{
   width: 70%;
   height: 1000px;
   background-color: white;
+}
+
+#new-tkt-frm-lbl{
+  margin-left: -88%;
+  font-weight: 700;
+}
+
+.required{
+  color: red;
+  margin-left:4px;
+}
+
+/**************************** SETTINGS *******************************/
+.ch-settings{
+  margin: auto;
+  margin-top: 10%;
+  padding: 40px;
+  width:1000px;
+  height: 480px;
+}
+
+.settings-title{
+  font-size: 20px;
+  font-weight: 600;
+  padding-left: 0%;
+  padding-bottom: 12px;
+  border-bottom: 1px solid rgb(189, 189, 189);
+}
+
+.settings-item-row{
+  margin-top: 16px;
+  height: 100px;
+  /* border: 2px solid rgb(8, 114, 31); */
+}
+
+.settings-item-col{
+  width:200px;
+  height: 100%;
+  /* border: 2px solid rgb(114, 8, 8); */
+}
+
+.settings-item{
+  margin-left: -140px;
+  margin-right: 50px;
+}
+
+.settings-item-icon{
+  margin-top: -2%;
+  font-size: 52px;
+  color:rgb(141, 190, 68);
 }

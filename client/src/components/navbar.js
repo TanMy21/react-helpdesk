@@ -5,11 +5,12 @@ import Col from "react-bootstrap/Col";
 import { VscBellDot } from "react-icons/vsc";
 import { BsQuestionCircle } from "react-icons/bs";
 
-const Nav = () => {
+const Nav = (props) => {
+  const { title } = props;
   return (
     <Navbar className="d-inline-flex flex-column navbar">
       <Col className="d-flex navbar-title">
-        <p>Title</p>
+        <p>{title}</p>
       </Col>
       <Col className="d-flex flex-column nav-icons">
         <Col>
@@ -19,7 +20,7 @@ const Nav = () => {
           <BsQuestionCircle className="help"/>
         </Col>
         <Col>
-          <div className="user-icon"><b>T</b></div>
+          <div className="user-icon align-items-center"><b className="user-icon-img">T</b></div>
         </Col>
       </Col>
     </Navbar>

@@ -1,4 +1,9 @@
 import React from "react";
+import Col from "react-bootstrap/esm/Col";
+import Row from "react-bootstrap/esm/Row";
+import Form from "react-bootstrap/Form";
+import Button from "react-bootstrap/Button";
+
 // import Row from "react-bootstrap/Row";
 // import Col from "react-bootstrap/Col";
 
@@ -6,51 +11,22 @@ const NewTicketForm = () => {
   return (
     <>
       <div className="new-tkt-form">
-        <form>
-          <div className="form-group">
-            <label for="exampleFormControlInput1">Email address</label>
-            <input
-              type="email"
-              className="form-control"
-              id="exampleFormControlInput1"
-              placeholder="name@example.com"
-            />
-          </div>
-          <div className="form-group">
-            <label for="exampleFormControlSelect1">Example select</label>
-            <select className="form-control" id="exampleFormControlSelect1">
-              <option>1</option>
-              <option>2</option>
-              <option>3</option>
-              <option>4</option>
-              <option>5</option>
-            </select>
-          </div>
-          <div className="form-group">
-            <label for="exampleFormControlSelect2">
-              Example multiple select
-            </label>
-            <select
-              multiple
-              className="form-control"
-              id="exampleFormControlSelect2"
-            >
-              <option>1</option>
-              <option>2</option>
-              <option>3</option>
-              <option>4</option>
-              <option>5</option>
-            </select>
-          </div>
-          <div className="form-group">
-            <label for="exampleFormControlTextarea1">Example textarea</label>
-            <textarea
-              className="form-control"
-              id="exampleFormControlTextarea1"
-              rows="3"
-            ></textarea>
-          </div>
-        </form>
+        <Form>
+          <Form.Group className="mb-3" >
+            <Form.Label id="new-tkt-frm-lbl">
+              Contact<b className="required">*</b>
+            </Form.Label>
+            <Form.Control as="select">
+              <option value="1">One</option>
+              <option value="2">Two</option>
+              <option value="3">Three</option>
+            </Form.Control>
+          </Form.Group>
+
+          <Button variant="primary" type="submit">
+            Submit
+          </Button>
+        </Form>
       </div>
     </>
   );

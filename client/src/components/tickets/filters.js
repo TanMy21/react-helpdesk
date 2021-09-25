@@ -16,14 +16,6 @@ const Filter = () => {
             <option value="agent1">Agent 1</option>
           </select>
         </div>
-        <div className="form-group filter-input">
-          <label for="group" className="control-label filter-inp-label">
-            Group
-          </label>
-          <select id="group" className="filter-option">
-            <option value="group1">GROUP 1</option>
-          </select>
-        </div>
       </form>
     </>
   );

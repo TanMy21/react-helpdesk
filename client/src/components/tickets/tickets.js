@@ -8,9 +8,10 @@ import Col from "react-bootstrap/Col";
 import TicketsCard from "./tkt-cards";
 
 const Tickets = () => {
+  const title = "ALL TICKETS"
   return (
     <>
-      <Nav />
+      <Nav title={title}/>
       <Sidebar />
       <Sort />
       <div className="d-flex flex-column main">
