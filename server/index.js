@@ -1,61 +1,39 @@
 // require //
 const express = require("express");
 
-const cors = require("cors");
+const config = require('config');
 
-// const bodyParser = require("body-parser");
+const db = require('./config/db_config');
 
-const cookieParser = require("cookie-parser");
+const app = express();
 
-const passport = require("passport");
+const users = require('./routes/users');
 
-if (process.env.NODE_ENV !== "production") {
-  require("dotenv").config();
+const auth = require('./routes/auth');
+
+const admin = require('./routes/admin');
+
+
+
+if(!config.get('jwtPrivateKey')){
+  console.error('FATAL ERROR: jwtPrivateKey is not defined.');
+  process.exit(1);
 }
 
-const db = require("./config/db_config");
 
-const jwtStrategy = require("./strategies/JwtStrategy");
-
-const localStrategy = require("./strategies/LocalStrategy");
-
-const authenticate = require("./config/authenticate");
-
-const userRouter = require("./routes/userRoutes");
-
-
-// call //
-const app = express();
 // port //
 const port = 8000;
 
 // middleware //
 app.use(express.json());
-app.use(cookieParser(process.env.COOKIE_SECRET));
 
-// whitelist url //
-const whitelist = process.env.WHITELISTED_DOMAINS
-  ? process.env.WHITELISTED_DOMAINS.split(",")
-  : [];
+app.use('/api/users', users);
 
-// CORS Policy //
-const corsOptions = {
-  origin: function (origin, callback) {
-    if (!origin || whitelist.indexOf(origin) !== -1) {
-      callback(null, true);
-    } else {
-      callback(new Error("Not allowed by CORS"));
-    }
-  },
+app.use('/api/auth', auth);
 
-  credentials: true,
-};
+app.use('/api/admin', admin);
 
-app.use(cors(corsOptions));
 
-app.use(passport.initialize());
-
-app.use("/user", userRouter);
 
 // routes //
 app.get("/", function (req, res) {

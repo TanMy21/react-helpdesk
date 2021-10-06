@@ -1,58 +1,46 @@
+const Joi = require("joi");
 const mongoose = require("mongoose");
+const jwt = require('jsonwebtoken');
+const config = require('config');
 
-const Schema = mongoose.Schema;
-
-const passportLocalMongoose = require("passport-local-mongoose")
-
-const Session = new Schema({
-    refreshToken:{
-        type: String,
-        default:""
-    }
+const userSchema = new mongoose.Schema({
+  name: {
+    type: String,
+    required: true,
+    minlength: 5,
+    maxlength: 50,
+  },
+  email: {
+    type: String,
+    required: true,
+    minlength: 5,
+    maxlength: 255,
+    unique: true,
+  },
+  password: {
+    type: String,
+    required: true,
+    minlength: 5,
+    maxlength: 1024,
+  },
 });
 
-const User = new Schema({
-    firstName: {
-        type: String,
-        default: "",
-        required: true
-    },
-    LastName: {
-        type: String,
-        default: "",
-        required: true
-    },
-    email: {
-        type: String,
-        default: "",
-        required: true
-    },
-    password: {
-        type: String,
-        default: "",
-        required: true
-    },
-    authStrategy: {
-        type: String,
-        default: "local",
-        required: true
-    },
-    refreshToken: {
-        type: [Session]
-    }
-    },{
-        timestamps: true
-    });
+userSchema.methods.generateAuthToken = function () {
+  const token = jwt.sign({ _id: this._id }, config.get("jwtPrivateKey"));
+  return token;
+}
 
+const User = mongoose.model("Users", userSchema);
 
-//Remove refreshToken from the response
-User.set("toJSON", {
-    transform: function (doc, ret, options) {
-      delete ret.refreshToken
-      return ret
-    },
+function validateUser(user) {
+  const schema = Joi.object({
+    name: Joi.string().min(5).max(50).required(),
+    email: Joi.string().min(5).max(255).required().email(),
+    password: Joi.string().min(5).max(255).required(),
   });
-  
-  User.plugin(passportLocalMongoose);
-  
-  module.exports = mongoose.model("User", User);
+
+  return schema.validate(user);
+}
+
+exports.User = User;
+exports.validate = validateUser;
