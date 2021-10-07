@@ -55,6 +55,15 @@ body{
   /* border: 2px solid black; */
 }
 
+.error {
+  border-color: red;
+}
+
+.input-feedback {
+  color: rgb(235, 54, 54);
+  margin-top: 4px;
+  font-size: 1rem;
+}
 
 /*****************  Sidebar  ***************/
 .sidebar{
@@ -431,4 +440,29 @@ select{
   margin-top: -2%;
   font-size: 52px;
   color:rgb(141, 190, 68);
+}
+
+/**************************** NEW AGENT *******************************/
+.new-agent{
+  width: 70%;
+  height: 900px;
+  background-color: white;
+  margin-left: -0px;
+  padding-left: 4%;
+  padding-top: 4%;
+}
+.new-agent-form{
+  display: flex;
+  width: 80%;
+  height: 800px;
+  /* background-color: rgb(131, 49, 49); */
+  justify-content: start;
+  padding: 2%;
+}
+
+.agent-form{
+ margin-top: 10%;
+ margin-left: -16%;
+ width: 100%;
+ /* border: 2px solid black; */
 }
