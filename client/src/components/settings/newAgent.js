@@ -6,6 +6,7 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
 import { Formik } from "formik";
+import * as userService from "../../services/userService";
 
 const NewAgent = (props) => {
   const title = "New Agent";
@@ -22,15 +23,12 @@ const NewAgent = (props) => {
             <Row className="agent-form">
               <Formik
                 initialValues={{
-                  aname: "Agent Name",
+                  name: "Agent Name",
                   email: "Email",
                   password: "Password",
                 }}
-                onSubmit={(values, { setSubmitting }) => {
-                  setTimeout(() => {
-                    console.log("Submitting", values);
-                    setSubmitting(false);
-                  }, 500);
+                onSubmit={(values) => {
+                  userService.register(values);
                 }}
               >
                 {(props) => {
@@ -47,9 +45,9 @@ const NewAgent = (props) => {
                       className="d-flex flex-column"
                     >
                       <input
-                        name="agent-name"
+                        name="name"
                         type="text"
-                        value={values.aname}
+                        value={values.name}
                         onChange={handleChange}
                         onBlur={handleBlur}
                         className="w-100 p-2" 

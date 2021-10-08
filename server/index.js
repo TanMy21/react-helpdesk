@@ -7,6 +7,8 @@ const db = require('./config/db_config');
 
 const app = express();
 
+const cors = require('cors');
+
 const users = require('./routes/users');
 
 const auth = require('./routes/auth');
@@ -26,6 +28,8 @@ const port = 8000;
 
 // middleware //
 app.use(express.json());
+
+app.use(cors());
 
 app.use('/api/users', users);
 

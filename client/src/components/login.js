@@ -3,9 +3,14 @@ import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Button from "react-bootstrap/Button";
 import { Formik } from "formik";
-import * as Yup from "yup"; 
+import * as Yup from "yup";
+import auth from "../services/authService";
+import { useHistory } from "react-router-dom";
 
-const Login = () => {
+const Login = (props) => {
+
+  const history = useHistory();
+
   return (
     <Container className="login-container p-5">
       <Row className="justify-content-md-center mt-2">
@@ -17,11 +22,13 @@ const Login = () => {
             email: "Email",
             password: "Password",
           }}
-          onSubmit={(values, { setSubmitting }) => {
-            setTimeout(() => {
-              console.log("Logging in", values);
-              setSubmitting(false);
-            }, 500);
+          onSubmit={async (values) => {
+            try {
+              await auth.login(values.email, values.password);
+              history.push('/dashboard');
+            } catch (error) {
+              console.log(error);
+            }
           }}
           validationSchema={Yup.object().shape({
             email: Yup.string().email().required("* Enter Email"),
@@ -47,7 +54,9 @@ const Login = () => {
                   value={values.email}
                   onChange={handleChange}
                   onBlur={handleBlur}
-                  className={"p-2" || (errors.email && touched.email && "error") }
+                  className={
+                    "p-2" || (errors.email && touched.email && "error")
+                  }
                 />
                 {errors.email && touched.email && (
                   <div className="input-feedback">{errors.email}</div>
@@ -59,7 +68,10 @@ const Login = () => {
                   value={values.password}
                   onChange={handleChange}
                   onBlur={handleBlur}
-                  className={ "mt-4 p-2" || errors.password && touched.password && "error"}
+                  className={
+                    "mt-4 p-2" ||
+                    (errors.password && touched.password && "error")
+                  }
                 />
                 {errors.password && touched.password && (
                   <div className="input-feedback">{errors.password}</div>
